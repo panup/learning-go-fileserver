@@ -30,7 +30,7 @@
  Download with
  
  ```bash
- curl --location 'http://localhost:8080/download?encryptionkey=a61d3e138ced4c05a07f8c756960b48e&filekey=5ebc4ea526ca4fecb6558df37f743a6b'
+ curl --location 'http://localhost:8080/download?encryptionkey=a61d3e138ced4c05a07f8c756960b48e&filekey=5ebc4ea526ca4fecb6558df37f743a6b' --output img.jpg
  ```
  
  
