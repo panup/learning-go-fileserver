@@ -3,9 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
+
+	if _, err := os.Stat("storage"); os.IsNotExist(err) {
+		err := os.Mkdir("storage", os.ModePerm)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/upload", fileUploadHandler)

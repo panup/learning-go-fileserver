@@ -28,8 +28,8 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 
 	resp := make(map[string]string)
 
-	resp["fileKey"] = generateKey()
-	resp["encryptionKey"] = generateKey()
+	resp["filekey"] = generateKey()
+	resp["encryptionkey"] = generateKey()
 
 	if err != nil {
 		fmt.Println(err)
@@ -43,14 +43,14 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	encryptedBytes, err := encryptBytes(fileBytes, []byte(resp["encryptionKey"]))
+	encryptedBytes, err := encryptBytes(fileBytes, []byte(resp["encryptionkey"]))
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
-	err = os.WriteFile("storage/"+resp["fileKey"], encryptedBytes, 0)
+	err = os.WriteFile("storage/"+resp["filekey"], encryptedBytes, 0)
 
 	if err != nil {
 		fmt.Println(err)
